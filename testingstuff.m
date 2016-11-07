@@ -46,7 +46,7 @@ targ30 = Target();
 
 targ.radius = 1;
 %{
-targ1.radius = 1;
+
 targ2.radius = 1;
 targ3.radius = 1;
 targ4.radius = 1;
