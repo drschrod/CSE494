@@ -153,6 +153,25 @@ sim.visualize();
 % remove prompt
 title(' ');
 
+
+%%
+% For adding targets
+%{
+s = char(97:122) % Or just use: s = 'abcdefghijklmnopqrstuvwxyz';
+rows=7
+
+for i=1:7
+    for j=1:10
+        seat=j;
+        row=[s(i)];
+        fprintf('\nRow:%c',row)
+        fprintf('\n Seat:%d\n\n',seat)
+    end 
+end
+%}
+
+
+
 %% run simulation for a 1000x steps
 for i = 1:1000
 
