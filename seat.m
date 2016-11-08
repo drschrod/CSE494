@@ -4,6 +4,8 @@ classdef seat < Object
     
     properties
         velocity  % velocity of target (0 for static targets)
+        seatNum   %The seat number within the row
+        row       %The row letter, should be a char a-z
     end
     
     methods
