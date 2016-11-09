@@ -7,15 +7,13 @@ sim = SteeringSimulator();
 
 % seed the random number generator
 rng(42)
-
-<<<<<<< HEAD
 targ = seat(); 
 targ.radius = 1;
 targ.position = [5;5];
 wall = WallRound(targ);  % creating 
 sim = sim.registerObject(targ);  
 sim = sim.registerObject(wall);
-=======
+
 %% create a target and ask for position of target
 targ = seat();
 
@@ -25,7 +23,7 @@ targ.position = [5;5];
 
 sim = sim.registerObject(targ);
 
->>>>>>> origin/master
+
 sim.visualize();
 title(' ');
 
@@ -44,6 +42,8 @@ for i=1:rows
         chair.row=[s(i)];
         chair.radius=1;                     %Is this right?
         chair.position=[(5*i);(5*j)];
+        wall = WallRound(chair);
+        sim = sim.registerObject(wall);
         sim = sim.registerSeat(chair);    %Add the seat to the list
         
         %seat=j;                            %Debugg
