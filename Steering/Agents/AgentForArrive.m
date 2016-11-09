@@ -93,7 +93,7 @@ classdef AgentForArrive < Object
             obj.position = obj.position + obj.velocity;
         end
         
-        function output_vector = normlz(obj, input_vector)
+        function output_vector = normlz(obj, input_vector)    
             %normlz This function computes the normalized vector
             % input_vector is expected to have form: [x_comp; y_comp]
             magn = norm(input_vector);
@@ -105,7 +105,7 @@ classdef AgentForArrive < Object
             end
         end
         
-        function steering = steeringSeek(obj, target)
+        function steering = steeringSeek(obj, target) 
             %steeringSeek This function implements the Seek steering
             %behaviour
             %  MES: here's where the error was
