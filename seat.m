@@ -18,11 +18,21 @@ classdef seat < Object
         end
         
         function visualize(obj)
-           %got rid of the visualize within the seat since its made in wall
-           %round
-           viscircles(obj.position', obj.radius, 'EdgeColor', obj.color);
-           
-            
+            % show target as a circle with lines through it
+            viscircles(obj.position', obj.radius, 'EdgeColor', obj.color);
+            v = [obj.position' + [-2 2]; obj.position' + [2 2]]; 
+            patch('Faces', 1:2, 'Vertices', v, 'FaceColor', 'red')
+            v = [obj.position' + [2 -2]; obj.position' + [2 2]]; 
+            patch('Faces', 1:2, 'Vertices', v, 'FaceColor', 'red')
+             v = [obj.position' + [-2 2]; obj.position' + [-2 -2]]; 
+            patch('Faces', 1:2, 'Vertices', v, 'FaceColor', 'red')
+            %x1 = obj.position.x-.5;
+            %x2 = obj.position.x+.5;
+            %y1 = obj.position.y-.5;
+            %y2 = obj.position.y+.5;
+            %x = [x1, x1, x2,x2];
+            %y = [y1, y2, y2,y1];
+            %plot(x, y, 'b-');
         end
     end
     

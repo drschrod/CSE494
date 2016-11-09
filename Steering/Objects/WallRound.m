@@ -5,24 +5,18 @@ classdef WallRound < Object
     end
     
     methods
-            function obj = WallRound(targ)  % changed it so that the wall is formed around each target created
+        function visualize(obj)
+            viscircles(obj.position', obj.radius,'EdgeColor','black');
+        end
+           
+        function obj = WallRound()
             % set initial values
-            obj.position = targ.position; 
+            obj.position = [0;0];  % at origin by default
             obj.radius = 1;
             obj.type = 'Wall';
             obj.color = 'g';
         end
         
-        function visualize(obj)
-            v = [obj.position' + [-2 2]; obj.position' + [2 2]]; % this section allows for the walls to be visualized
-            patch('Faces', 1:2, 'Vertices', v, 'FaceColor', 'red')
-            v = [obj.position' + [2 -2]; obj.position' + [2 2]]; 
-            patch('Faces', 1:2, 'Vertices', v, 'FaceColor', 'red')
-             v = [obj.position' + [-2 2]; obj.position' + [-2 -2]]; 
-            patch('Faces', 1:2, 'Vertices', v, 'FaceColor', 'red')
-        end
-           
-    
     end
     
 end
