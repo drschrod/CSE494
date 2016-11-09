@@ -5,9 +5,9 @@ classdef WallRound < Object
     end
     
     methods
-            function obj = WallRound(targ)  % changed it so that the wall is formed around each target created
+            function obj = WallRound()  % changed it so that the wall is formed around each target created
             % set initial values
-            obj.position = targ.position; 
+            % obj.position = targ.position; 
             obj.radius = 1;
             obj.type = 'Wall';
             obj.color = 'g';

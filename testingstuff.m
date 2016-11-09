@@ -1,6 +1,5 @@
 % CSE 494 - Interactive Robotics:
-% This demo depicts the 'seek' steering behavior
-% The agent will move in a straight line to the goal
+
 
 % create the simulator object
 sim = SteeringSimulator();
@@ -28,7 +27,8 @@ for i=1:rows
         chair.row=[s(i)];
         chair.radius=1;                     %Is this right?
         chair.position=[(9.5*i);(9.5*j)];
-        wall = WallRound(chair);
+        wall = WallRound();
+        wall.position=chair.position;
         sim = sim.registerObject(rAgent);
         sim = sim.registerObject(wall);
         sim = sim.registerSeat(chair);    %Add the seat to the list
