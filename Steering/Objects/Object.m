@@ -8,6 +8,10 @@ classdef Object
         ID          % Unique IDE
         type        % object type (wall, agent, etc.)
         color       % color of object
+        boxBottomLeft
+        boxTopLeft          %these provide boundaries of where the walls of the seats are
+        boxTopRight
+        boxBottomRight
     end
     
     methods
