@@ -52,10 +52,7 @@ for i=1:rows
         %fprintf('\n Seat:%d\n\n',seat)     %Debugging statement
     end 
 end
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 
 sim.visualize();
 
