@@ -8,24 +8,12 @@ sim = SteeringSimulator();
 % seed the random number generator
 rng(42)
 
-<<<<<<< HEAD
 targ = seat(); 
 targ.radius = 1;
 targ.position = [5;5];
 wall = WallRound(targ);  % creating 
 sim = sim.registerObject(targ);  
 sim = sim.registerObject(wall);
-=======
-%% create a target and ask for position of target
-targ = seat();
-
-targ.radius = 1;
-
-targ.position = [5;5];
-
-sim = sim.registerObject(targ);
-
->>>>>>> origin/master
 sim.visualize();
 title(' ');
 
@@ -52,12 +40,8 @@ for i=1:rows
         %fprintf('\n Seat:%d\n\n',seat)     %Debugging statement
     end 
 end
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 
-sim.visualize();
 
 %% run simulation for a 1000x steps
 for i = 1:1000
