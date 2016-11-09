@@ -5,25 +5,51 @@
 % create the simulator object
 sim = SteeringSimulator();
 
+% seed the random number generator
+rng(42)
+targ = seat(); 
+targ.radius = 1;
+targ.position = [5;5];
+wall = WallRound(targ);  % creating 
+sim = sim.registerObject(targ);  
+sim = sim.registerObject(wall);
+
+%% create a target and ask for position of target
+targ = seat();
+
+targ.radius = 1;
+
+targ.position = [5;5];
+
+sim = sim.registerObject(targ);
+
+
+sim.visualize();
+title(' ');
+
+
 %%
 % For adding targets
 
-s = char(97:122); % Or just use: s = 'abcdefghijklmnopqrstuvwxyz';
-rows=7;
+s = char(97:122) % Or just use: s = 'abcdefghijklmnopqrstuvwxyz';
+rows=7
 
 
 for i=1:rows
-    for j=1:7
+    for j=1:10
         chair=seat();
         chair.seatNum=j;
         chair.row=[s(i)];
         chair.radius=1;                     %Is this right?
-        chair.position=[(9.5*i);(9.5*j)];
+        chair.position=[(5*i);(5*j)];
         wall = WallRound(chair);
         sim = sim.registerObject(wall);
         sim = sim.registerSeat(chair);    %Add the seat to the list
         
-  
+        %seat=j;                            %Debugg
+        %row=[s(i)];                        %Debug
+        %fprintf('\nRow:%c',row)            %Debug
+        %fprintf('\n Seat:%d\n\n',seat)     %Debugging statement
     end 
 end
 
