@@ -9,18 +9,11 @@ sim = SteeringSimulator();
 % For adding targets
 
 s = char(97:122); % Or just use: s = 'abcdefghijklmnopqrstuvwxyz';
-rows=3;
+rows=7;
 
-
-% we'll need to say that the agent cannot pass through the coordinates of
-% topleft corner and top right corner
-% cannot pass through topright corner and bottom right cornerr
-%cannot pass through top left corner and bottom left corner
-%may only pass through the coordinates of bottom left and bottom right
-%corner
 
 for i=1:rows
-    for j=1:3
+    for j=1:7
         chair=seat();
         chair.seatNum=j;
         chair.row=[s(i)];
