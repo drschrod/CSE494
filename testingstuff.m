@@ -21,15 +21,12 @@ rows=3;
 
 for i=1:rows
     for j=1:3
-        rAgent = AgentArrive();
-        rAgent.position = [0;0];
         chair=seat();
         chair.seatNum=j;
         chair.row=[s(i)];
         chair.radius=1;                     %Is this right?
         chair.position=[(9.5*i);(9.5*j)];
         wall = WallRound(chair);
-        sim = sim.registerObject(rAgent);
         sim = sim.registerObject(wall);
         sim = sim.registerSeat(chair);    %Add the seat to the list
         

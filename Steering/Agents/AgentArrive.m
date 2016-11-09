@@ -11,18 +11,18 @@ classdef AgentArrive < AgentForArrive
             obj.color = 'c';
         end
         
-        function obj = nextStep(obj, seatList)
+        function obj = nextStep(obj, objectList)
             % get seek target among objects in objectList
-            for i=1:length(seatList)
-                object = seatList{i};
-                if (strcmp(object.type,'seat') == 1)
-                    chair = object.position;
+            for i=1:length(objectList)
+                object = objectList{i};
+                if (strcmp(object.type,'Target') == 1)
+                    target = object.position;
                 end
             end            
         
             
             % determine steering force to seek target
-            steering_direction = obj.steeringSeek(chair);
+            steering_direction = obj.steeringSeek(target);
             
             
              % show the desired velocity vector
