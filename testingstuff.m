@@ -20,19 +20,21 @@ rows=3;
 
 for i=1:rows
     for j=1:3
-        rAgent = AgentArrive();
-        rAgent.position = [0;0];
+  
         chair=seat();
         chair.seatNum=j;
         chair.row=[s(i)];
         chair.radius=1;                     %Is this right?
-        chair.position=[(9.5*i);(9.5*j)];
+        chair.position=[(5*i);(9.5*j)];
         wall = WallRound();
         wall.position=chair.position;
-        sim = sim.registerObject(rAgent);
         sim = sim.registerObject(wall);
+        sim = sim.registerObject(chair);
         sim = sim.registerSeat(chair);    %Add the seat to the list
-        
+        rAgent=AgentArrive();
+        rAgent.position=[30*i;40*j];
+
+        sim = sim.registerObject(rAgent);
   
     end 
 end
@@ -44,7 +46,7 @@ sim.visualize();
 for i = 1:1000
 
     % sim.visualize();
-    pause(0.05)
+    pause(0.1)
     sim= sim.simulateNextStep();
     sim.visualize()
 end

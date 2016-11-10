@@ -14,8 +14,8 @@ classdef SteeringSimulator
         function obj=SteeringSimulator()
             obj.fig = figure('units','pixel','Resize','off','position',[50 50 600 500]);
             figure(obj.fig);
-            xlim([0 100])
-            ylim([0 100])
+            xlim([0 50])
+            ylim([0 50])
             
             obj.time = 0;
             
