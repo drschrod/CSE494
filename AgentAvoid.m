@@ -25,8 +25,10 @@ classdef AgentAvoid < AgentForAvoiding
                 end
             end         
             
-            seatDist=abs(target-obj.position);
-            if(seatDist>1)   
+            %seatDistance is for determining if the agent is close enough
+            %to the destination so it can stop
+            seatDist=abs(target-obj.position)
+            if(seatDist>0.01)   
                 %Determine the steering force to seek target
                 steering_direction = obj.steeringSeek(target);
                 normalized = steering_direction/ norm(steering_direction);
@@ -41,17 +43,16 @@ classdef AgentAvoid < AgentForAvoiding
                if distance < obj.avoidDist
                   steering_direction = steering_direction + avoidance_force;
                   if(obj.flag==1)
-                      steering_direction=[0;-3];
+                      steering_direction=steering_direction*-1;
                   end
-                  steering_direction = steering_direction+ cos(30);
+                     steering_direction = steering_direction+ cos(5);
                     %  elseif distance2 < 3
                     % steering_direction = steering_direction + avoidance_force;
                     % steering_direction = sin(steering_direction)*500;
-                  obj.flag=1;
-                  if(obj.avoidDist>0.1)
-                     obj.avoidDist=obj.avoidDist-0.1;
-                  end
-               
+                  obj.flag=1
+                  if(obj.avoidDist>0)
+                     obj.avoidDist=obj.avoidDist-0.5;
+                  end;
                end
            
             %{

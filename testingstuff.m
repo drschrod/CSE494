@@ -38,15 +38,15 @@ for i=1:rows
 end
 hold off
 
-for i=1:numOfAgents
+%for i=1:numOfAgents
     
 
 rAgent=AgentAvoid();
 %rAgent=AgentForAvoiding();
-rAgent.position=[i*5;40];
+rAgent.position=[35;40];
 
 sim = sim.registerObject(rAgent);
-end
+%end
 sim.visualize();
 
 %% run simulation for a 1000x steps
