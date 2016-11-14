@@ -5,6 +5,8 @@ classdef AgentAvoid < AgentForAvoiding
     properties
         flag=0;
         avoidDist=6
+        targetX;
+        targetY;
     end
     
     methods
@@ -16,11 +18,10 @@ classdef AgentAvoid < AgentForAvoiding
         function obj = nextStep(obj, seatList)
             
             % get seek target among objects in objectList
+            target=[obj.targetX;obj.targetY];
             for i=1:length(seatList)
                 object = seatList{i};
-                if (strcmp(object.type,'seat') == 1)
-                    target = object.position;
-                elseif (strcmp(object.type,'Wall') == 1)
+                if (strcmp(object.type,'Wall') == 1)
                     wall = object;
                 end
             end         
