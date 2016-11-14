@@ -69,14 +69,19 @@ classdef AgentForAvoiding < Object
            obj.orientation = [new_forward(1:2,1),new_side(1:2,1)]';
         end
         
-        function obj = nextStep(obj, objectList)
+        function obj = nextStep(obj, seatList)
             %nextStep This function computes the new position and velocity
             %values of the agent for the next time step and implements the
             %specific behaviour of the agent. This function has to be
             %implemented for each new agent!
-            
-            steering_direction = [0;0];
-            
+            for i=1:length(seatList)
+                object = seatList{i};
+                if (strcmp(object.type,'seat') == 1)
+                    chair = object.position;
+                end
+            end  
+            %steering_direction = [0;0];
+            steering_direction = obj.steeringSeek(chair);
             obj.computeVeloPos(steering_direction);
             obj.reOrientate();
         end

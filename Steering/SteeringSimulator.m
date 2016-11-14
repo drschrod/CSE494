@@ -42,12 +42,14 @@ classdef SteeringSimulator
                 object = obj.objectList{i};
                 object.visualize();
             end
-            %Added another for loop for the seatList
+            %Redacted Loop for computing efficiency
             %We should have separate lists for diff object types
+            %{
             for i=1:length(obj.seatList)
-                object = obj.seatList{i};
-                object.visualize();
+               object = obj.seatList{i};
+               object.visualize();
             end
+             %}
             hold off
         end
         
