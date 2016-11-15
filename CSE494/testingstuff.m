@@ -43,11 +43,21 @@ for i=1:rows
 end
 hold off
 count=1;
+countTotal = 0;
 size = totalSeats;
 for i=1:numOfAgents/2
+    % this entrance is a random coin flip which forces the agent to spawn
+    % in one of two door positions.  
+    entrance = 1*rand(1,1)
     rAgent=AgentAvoid();
-    %rAgent=AgentForAvoiding();
+    
+    if(entrance < .50)
     rAgent.position=[35;40];
+    else 
+        rAgent.position=[5;40];
+    end
+    
+     %rAgent.position=[35;40];
     if(mod(count,2)==1)
     rAgent.targetX=array(1,count);
     rAgent.targetY=array(2,count);

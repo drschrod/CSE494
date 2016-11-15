@@ -13,7 +13,7 @@ sPr=3;      %sPr
 count=1;
 totalSeats=sPr*rows;
 array=zeros(2,totalSeats);
-numOfAgents=round(rand(1)*totalSeats);
+numOfAgents=round(rand(1)*(totalSeats+5));
 % we'll need to say that the agent cannot pass through the coordinates of
 % topleft corner and top right corner
 % cannot pass through topright corner and bottom right cornerr
@@ -43,18 +43,25 @@ for i=1:rows
 end
 hold off
 count=1;
+countTotal = 0;
+size = totalSeats;
 for i=1:numOfAgents/2
+    r = 1 + (0-1).*rand(100,1)
     rAgent=AgentAvoid();
     %rAgent=AgentForAvoiding();
     rAgent.position=[35;40];
-    if(mod(count,2)
+    if(mod(count,2)==1)
     rAgent.targetX=array(1,count);
     rAgent.targetY=array(2,count);
     sim = sim.registerObject(rAgent);
-    end
-    else if (count %2 == 0 
-        
     count=count+1;
+    else 
+     rAgent.targetX=array(1,size);
+    rAgent.targetY=array(2,size);
+    sim = sim.registerObject(rAgent);
+    size = size -1;
+    end
+    %count=count+1;
 end
 sim.visualize();
 
