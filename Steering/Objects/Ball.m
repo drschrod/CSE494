@@ -13,7 +13,7 @@ classdef Ball < Object
     
      methods
         function obj = Ball()  
-            obj.mass = .3;
+            obj.mass = 1;
             obj.position = [0;0];
             % obj.velocity = [-0.2;-0.2];
             obj.velocity = [0;0];   % ball is static at start
@@ -21,7 +21,7 @@ classdef Ball < Object
             obj.color = 'blue';
             obj.type = 'Ball';
             obj.radius = 0.5; 
-            obj.cimpulse = 0.5;
+            obj.cimpulse = 0.1;
             obj.maxX = 50;
             obj.maxY = 50;
         end
