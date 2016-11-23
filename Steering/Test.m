@@ -187,7 +187,7 @@ sim.visualize();
 % Arrival
 
 s = char(97:122); % Or just use: s = 'abcdefghijklmnopqrstuvwxyz';
-rows=3;     %Total number of rows
+rows=6;     %Total number of rows
 sPr=3;      %sPr
 count=1;
 totalSeats=sPr*rows;
@@ -198,7 +198,7 @@ numOfAgents=8;
 for i = 1:rows
     for j = 1:sPr        
 targ = Target();
-targ.position= [(12*i);(10*j)];
+targ.position= [(10+4*i);(10*j)];
 targ.radius = 1;
 targ.color = 'b';
 array(1,count)=targ.position(1,:);
@@ -214,28 +214,31 @@ hold off
 count=1;
 countTotal = 5;
 size = totalSeats;
-for i = 1:1
+door1 = 50;
+door2 = 50;
+for i = 1:9
     entrance = 1*rand(1,1);
     rAgent = AgentComboDemo();
     
-  %  if(entrance < .50)
-    rAgent.position=[50;50];
-   % else 
-    %    rAgent.position=[0;50];
-   % end
+   if(entrance < .50)
+    rAgent.position=[35;door1];
+  door1= door1+5; 
+   else 
+        rAgent.position=[5;door2];
+   door2=door2+5; 
+   end
     
-     if(mod(count,2)==1)
-    rAgent.targetPositionX=array(1,count);
-    rAgent.targetPositionY=array(2,count);
-    sim = sim.registerObject(rAgent);
-    count=count+1;
-    else 
-     rAgent.targetPositionX=array(1,size);
-    rAgent.targetPositionY=array(2,size);
-    sim = sim.registerObject(rAgent);
-    size = size -1;
+    r = randi([1 totalSeats],1,1);
+    while(array(1,r)==0 && array(2,r)==0)
+         r = randi([1 totalSeats],1,1);  
     end
-   
+    
+    rAgent.targetPositionX=array(1,r);
+    rAgent.targetPositionY=array(2,r);
+    sim = sim.registerObject(rAgent);
+  % count=count+1;   
+    array(1,r)=0;
+    array(2,r)=0;
 end
 
 %
@@ -246,7 +249,7 @@ path = PathMulti();
 %  add points to path
 path.ptmtx = [];
 for i = 1:9
-    x=5;
+    x=2;
     y=5;
     if(i==2)
         
@@ -270,13 +273,13 @@ for i = 1:9
     
          if(i==5 )
        y = 5;
-       x =5;
+       x =2;
     path.ptmtx = [path.ptmtx;  x y];
          end
          
          if(i==6 )
        y = 15;
-       x =5;
+       x =2;
     path.ptmtx = [path.ptmtx;  x y];
          end
     
@@ -296,7 +299,7 @@ for i = 1:9
           
          if(i==9 )
        y = 25;
-       x =5;
+       x =2;
     path.ptmtx = [path.ptmtx;  x y];
          end
          

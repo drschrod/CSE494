@@ -195,7 +195,7 @@ array=zeros(2,totalSeats);
 numOfAgents=8;
 
 % Add a target for the Demo agent to arrive at
-for i = 1:rows
+for i = 1:rows*12
     for j = 1:sPr        
 targ = Target();
 targ.position= [(12*i);(10*j)];
@@ -207,21 +207,22 @@ sim = sim.registerObject(targ);
 %sim.visualize();
 % remove prompt
 count = count+1;
+i=i=
     end
 end
 
 hold off
 count=1;
-countTotal = 0;
+countTotal = 5;
 size = totalSeats;
-for i = 1:numOfAgents/2
+for i = 1:4
     entrance = 1*rand(1,1);
     rAgent = AgentComboDemo();
     
-    if(entrance < .50)
-    rAgent.position=[35;40];
+   if(entrance < .50)
+    rAgent.position=[50;50];
     else 
-        rAgent.position=[5;40];
+        rAgent.position=[0;50];
     end
     
      if(mod(count,2)==1)

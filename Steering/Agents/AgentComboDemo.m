@@ -12,7 +12,7 @@ classdef AgentComboDemo < Agent
         function obj = AgentComboDemo()
             % obj.type = 'AgentCombo';
             obj.color = 'c';
-            obj.slowcircle = 10;
+            obj.slowcircle = 1;
             obj.velocity = [0.01; 0.01];
             obj.time = 0;
         end
@@ -31,18 +31,25 @@ classdef AgentComboDemo < Agent
             
             % set weights
             %
-            if((abs(obj.targetPositionX)-abs(obj.position(1,:))) < 6 && (abs(obj.targetPositionY)-abs(obj.position(2,:))) <6) % object is really close to target  
-                c_PFM = 1;
-                c_av = .5;
-                c_arr = .7;
-           
-            %    c_PFM = .2;
-             %  c_av = 0.5;
-              %  c_arr = 1;
-            end
+            
+           xdisplacement= abs(abs(obj.targetPositionX)-abs(obj.position(1,:)))
+           ydisplacement=abs((abs(obj.targetPositionY)-abs(obj.position(2,:))))
+            if(xdisplacement < 1 && ydisplacement <6) % object is really close to target  
+                c_PFM = 0;
+               c_av = 0;
+              c_arr =1;
+                steering_direction = c_arr*steer_arrive;
+            
+            
+            else 
+            c_PFM = 1;
+               c_av = 0.2;
+              c_arr =.7;
+              steering_direction = c_PFM*steer_PFM + c_av*steer_avoid + c_arr*steer_arrive;
+            end 
             
             % compute steering direction as linear combo of above
-            steering_direction = c_PFM*steer_PFM + c_av*steer_avoid + c_arr*steer_arrive;
+           %steering_direction = c_PFM*steer_PFM + c_av*steer_avoid + c_arr*steer_arrive;
             
             % show the desired velocity vector
             % v = [obj.position'; target'; obj.position']; 
